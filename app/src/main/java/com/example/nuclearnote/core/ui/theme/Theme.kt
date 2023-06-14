@@ -1,4 +1,4 @@
-package com.example.nuclearnote.ui.theme
+package com.example.nuclearnote.core.ui.theme
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.darkColors

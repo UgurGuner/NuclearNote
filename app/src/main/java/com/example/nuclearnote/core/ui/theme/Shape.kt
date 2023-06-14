@@ -1,4 +1,4 @@
-package com.example.nuclearnote.ui.theme
+package com.example.nuclearnote.core.ui.theme
 
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Shapes
