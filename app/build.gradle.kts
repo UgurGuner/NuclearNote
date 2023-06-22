@@ -67,16 +67,20 @@ dependencies {
     implementation(dependencyNotation = "androidx.lifecycle:lifecycle-runtime-compose:2.6.1")
     implementation(dependencyNotation = "com.google.android.material:compose-theme-adapter:1.2.1")
     implementation(dependencyNotation = "com.google.accompanist:accompanist-appcompat-theme:0.16.0")
-    implementation(dependencyNotation = "androidx.navigation:navigation-compose:2.5.3")
+    implementation(dependencyNotation = "androidx.navigation:navigation-compose:2.6.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
     implementation("com.google.dagger:hilt-android:2.44")
     kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation(dependencyNotation = "androidx.core:core-splashscreen:1.0.1")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.4")
-    implementation("androidx.room:room-ktx:2.5.1")
-    implementation("androidx.room:room-runtime:2.5.1")
-    kapt("androidx.room:room-compiler:2.5.1")
+    implementation("androidx.room:room-ktx:2.5.2")
+    implementation("androidx.room:room-runtime:2.5.2")
+    kapt("androidx.room:room-compiler:2.5.2")
 }
 
 kapt {
     correctErrorTypes = true
+    arguments {
+        arg("room.schemaLocation", "$projectDir/schemas")
+    }
 }

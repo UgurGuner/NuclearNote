@@ -2,5 +2,7 @@ package com.example.nuclearnote.domain.use_case
 
 data class NoteUseCases(
     val getNotesUseCase: GetNotesUseCase,
-    val deleteNoteUseCase: DeleteNoteUseCase
+    val deleteNoteUseCase: DeleteNoteUseCase,
+    val addNoteUseCase: AddNoteUseCase,
+    val getNoteUseCase: GetNoteUseCase
 )

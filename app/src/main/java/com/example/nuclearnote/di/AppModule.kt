@@ -5,7 +5,9 @@ import androidx.room.Room
 import com.example.nuclearnote.data.data_source.NoteDatabase
 import com.example.nuclearnote.data.repository.NoteRepositoryImpl
 import com.example.nuclearnote.domain.repository.NoteRepository
+import com.example.nuclearnote.domain.use_case.AddNoteUseCase
 import com.example.nuclearnote.domain.use_case.DeleteNoteUseCase
+import com.example.nuclearnote.domain.use_case.GetNoteUseCase
 import com.example.nuclearnote.domain.use_case.GetNotesUseCase
 import com.example.nuclearnote.domain.use_case.NoteUseCases
 import dagger.Module
@@ -28,7 +30,7 @@ object AppModule {
             name = NoteDatabase.DATABASE_NAME
         ).build()
 
-    }   
+    }
 
     @Provides
     @Singleton
@@ -41,7 +43,9 @@ object AppModule {
     fun provideNoteUseCases(noteRepository: NoteRepository): NoteUseCases {
         return NoteUseCases(
             getNotesUseCase = GetNotesUseCase(repository = noteRepository),
-            deleteNoteUseCase = DeleteNoteUseCase(noteRepository = noteRepository)
+            deleteNoteUseCase = DeleteNoteUseCase(noteRepository = noteRepository),
+            addNoteUseCase = AddNoteUseCase(noteRepository = noteRepository),
+            getNoteUseCase = GetNoteUseCase(noteRepository = noteRepository)
         )
     }
 
