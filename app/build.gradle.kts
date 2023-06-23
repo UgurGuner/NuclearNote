@@ -21,6 +21,17 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    signingConfigs {
+
+        create("release") {
+            storeFile = file("../app/NuclearNoteReleaseKeystore")
+            storePassword = "NN2294@"
+            keyPassword = "NN2294@"
+            keyAlias = "NuclearNoteKeystore"
+        }
+
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -28,6 +39,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            signingConfig = signingConfigs.getByName("release")
         }
     }
     compileOptions {
