@@ -17,7 +17,9 @@ import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.clipPath
+import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.core.graphics.ColorUtils
@@ -92,4 +94,17 @@ fun NoteItem(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun ShowExample() {
+
+    NoteItem(
+        note = Note(color = Color.White.toArgb(), content = "Hello", title = "Hello", timeStamp = 2),
+        modifier = Modifier.fillMaxWidth().height(120.dp)
+    ) {
+
+    }
+
 }

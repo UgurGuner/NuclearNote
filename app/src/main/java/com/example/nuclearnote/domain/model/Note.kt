@@ -1,5 +1,7 @@
 package com.example.nuclearnote.domain.model
 
+import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.nuclearnote.core.ui.theme.BabyBlue
@@ -14,11 +16,12 @@ data class Note(
     val content: String,
     val timeStamp: Long,
     val color: Int,
-    @PrimaryKey val id: Int? = null
+    @ColumnInfo("imageData") val noteAttachments: ArrayList<ByteArray> = arrayListOf(),
+    @PrimaryKey val id: Int? = null,
 ) {
 
     companion object {
-        val noteColors = listOf(RedOrange, LightGreen, Violet, BabyBlue, RedPink)
+        val noteColors = listOf(White, RedOrange, LightGreen, Violet, BabyBlue, RedPink)
     }
 
 }

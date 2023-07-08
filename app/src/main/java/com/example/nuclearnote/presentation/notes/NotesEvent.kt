@@ -8,4 +8,6 @@ sealed class NotesEvent {
     data class DeleteNote(val note: Note): NotesEvent()
     data class RestoreNote(val note: Note): NotesEvent()
     object ToggleOrderSection: NotesEvent()
+    data class RefreshNotes(val noteOrder: NoteOrder): NotesEvent()
+
 }

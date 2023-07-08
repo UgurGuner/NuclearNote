@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.nuclearnote.core.ui.theme.NuclearNoteAppTheme
-import com.example.nuclearnote.presentation.add_edit_note.AddEditNoteScreen
+import com.example.nuclearnote.presentation.add_edit_note.AddEditNotePage
 import com.example.nuclearnote.presentation.notes.NotesPage
 import com.example.nuclearnote.presentation.util.Screen
 import dagger.hilt.android.AndroidEntryPoint
@@ -55,7 +55,7 @@ class MainActivity : ComponentActivity() {
                             )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1
-                            AddEditNoteScreen(
+                            AddEditNotePage(
                                 navController = navController,
                                 noteColor = color
                             )

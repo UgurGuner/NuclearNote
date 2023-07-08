@@ -9,6 +9,9 @@ import com.example.nuclearnote.domain.util.NoteOrder
 import com.example.nuclearnote.domain.util.OrderType
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
@@ -19,13 +22,20 @@ class NotesViewModel @Inject constructor(
     private val noteUseCases: NoteUseCases
 ) : ViewModel() {
 
+    private val _isRefreshing = MutableStateFlow(false)
+    val isRefreshing: StateFlow<Boolean>
+        get() = _isRefreshing.asStateFlow()
+
     private val _state = mutableStateOf(NotesState())
     val state: State<NotesState> = _state
+
+    private val _selectedOrder: MutableStateFlow<NoteOrder> = MutableStateFlow(NoteOrder.Date(OrderType.Desc))
+    val selectedOrder: StateFlow<NoteOrder> = _selectedOrder.asStateFlow()
 
     private var notesJob: Job? = null
 
     init {
-        getNotes(noteOrder = NoteOrder.Date(OrderType.Desc))
+        getNotes(noteOrder = selectedOrder.value)
     }
 
     fun onEvent(event: NotesEvent) {
@@ -48,6 +58,8 @@ class NotesViewModel @Inject constructor(
                     return
                 }
 
+                _selectedOrder.value = selectedOrder.value
+
                 getNotes(noteOrder = event.noteOrder)
 
             }
@@ -65,6 +77,14 @@ class NotesViewModel @Inject constructor(
                 _state.value = state.value.copy(
                     isOrderSectionVisible = !state.value.isOrderSectionVisible
                 )
+
+            }
+
+            is NotesEvent.RefreshNotes -> {
+
+                _selectedOrder.value = selectedOrder.value
+
+                getNotes(noteOrder = event.noteOrder)
 
             }
 
