@@ -1,4 +1,4 @@
-package com.example.nuclearnote.domain.use_case
+package com.example.nuclearnote.domain.useCase
 
 import com.example.nuclearnote.data.repository.FakeNoteRepository
 import com.example.nuclearnote.domain.model.Note
@@ -7,7 +7,6 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-
 
 class AddNoteUseCaseTest {
 
@@ -22,7 +21,6 @@ class AddNoteUseCaseTest {
 
     @Test
     fun `Add a note to the list correctly`() {
-
         val noteList = arrayListOf<Note>()
 
         val note = Note(
@@ -42,7 +40,5 @@ class AddNoteUseCaseTest {
                 assertThat(noteList.find { it.id == note.id }).isNotNull()
             }
         }
-
     }
-
 }

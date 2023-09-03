@@ -2,14 +2,14 @@ package com.example.nuclearnote.di
 
 import android.app.Application
 import androidx.room.Room
-import com.example.nuclearnote.data.data_source.NoteDatabase
+import com.example.nuclearnote.data.dataSource.NoteDatabase
 import com.example.nuclearnote.data.repository.NoteRepositoryImpl
 import com.example.nuclearnote.domain.repository.NoteRepository
-import com.example.nuclearnote.domain.use_case.AddNoteUseCase
-import com.example.nuclearnote.domain.use_case.DeleteNoteUseCase
-import com.example.nuclearnote.domain.use_case.GetNoteUseCase
-import com.example.nuclearnote.domain.use_case.GetNotesUseCase
-import com.example.nuclearnote.domain.use_case.NoteUseCases
+import com.example.nuclearnote.domain.useCase.AddNoteUseCase
+import com.example.nuclearnote.domain.useCase.DeleteNoteUseCase
+import com.example.nuclearnote.domain.useCase.GetNoteUseCase
+import com.example.nuclearnote.domain.useCase.GetNotesUseCase
+import com.example.nuclearnote.domain.useCase.NoteUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -23,13 +23,11 @@ object AppModule {
     @Provides
     @Singleton
     fun provideNoteDatabase(app: Application): NoteDatabase {
-
         return Room.databaseBuilder(
             context = app,
             klass = NoteDatabase::class.java,
             name = NoteDatabase.DATABASE_NAME
         ).build()
-
     }
 
     @Provides
@@ -48,5 +46,4 @@ object AppModule {
             getNoteUseCase = GetNoteUseCase(noteRepository = noteRepository)
         )
     }
-
 }

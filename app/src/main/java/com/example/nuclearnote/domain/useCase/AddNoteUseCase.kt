@@ -1,4 +1,4 @@
-package com.example.nuclearnote.domain.use_case
+package com.example.nuclearnote.domain.useCase
 
 import com.example.nuclearnote.domain.model.InvalidNoteException
 import com.example.nuclearnote.domain.model.Note
@@ -10,7 +10,6 @@ class AddNoteUseCase(
 
     @Throws(InvalidNoteException::class)
     suspend operator fun invoke(note: Note) {
-
         if (note.title.isBlank()) {
             throw InvalidNoteException("Note Title cannot be empty.")
         }
@@ -20,7 +19,5 @@ class AddNoteUseCase(
         }
 
         noteRepository.insertNote(note = note)
-
     }
-
 }

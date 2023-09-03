@@ -1,4 +1,4 @@
-package com.example.nuclearnote.domain.use_case
+package com.example.nuclearnote.domain.useCase
 
 import com.example.nuclearnote.domain.model.Note
 import com.example.nuclearnote.domain.repository.NoteRepository
@@ -10,5 +10,4 @@ class GetNoteUseCase(
     suspend operator fun invoke(id: Int): Note? {
         return noteRepository.getNoteById(id)
     }
-
 }

@@ -1,4 +1,4 @@
-package com.example.nuclearnote.data.data_source
+package com.example.nuclearnote.data.dataSource
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -22,5 +22,4 @@ interface NoteDao {
 
     @Delete
     suspend fun deleteNote(note: Note)
-
 }

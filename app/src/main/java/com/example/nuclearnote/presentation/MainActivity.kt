@@ -12,7 +12,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.nuclearnote.core.ui.theme.NuclearNoteAppTheme
-import com.example.nuclearnote.presentation.add_edit_note.AddEditNotePage
+import com.example.nuclearnote.presentation.addEditNote.AddEditNotePage
 import com.example.nuclearnote.presentation.notes.NotesPage
 import com.example.nuclearnote.presentation.util.Screen
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(
                             route = Screen.AddEditNoteScreen.route +
-                                    "?noteId={noteId}&noteColor={noteColor}",
+                                "?noteId={noteId}&noteColor={noteColor}",
                             arguments = listOf(
                                 navArgument(
                                     name = "noteId"
@@ -51,7 +51,7 @@ class MainActivity : ComponentActivity() {
                                 ) {
                                     type = NavType.IntType
                                     defaultValue = -1
-                                },
+                                }
                             )
                         ) {
                             val color = it.arguments?.getInt("noteColor") ?: -1

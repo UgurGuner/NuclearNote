@@ -1,4 +1,4 @@
-package com.example.nuclearnote.domain.use_case
+package com.example.nuclearnote.domain.useCase
 
 data class NoteUseCases(
     val getNotesUseCase: GetNotesUseCase,

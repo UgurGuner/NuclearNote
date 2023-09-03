@@ -1,4 +1,4 @@
-package com.example.nuclearnote.domain.use_case
+package com.example.nuclearnote.domain.useCase
 
 import com.example.nuclearnote.data.repository.FakeNoteRepository
 import com.example.nuclearnote.domain.model.Note
@@ -17,7 +17,6 @@ class GetNotesUseCaseTest {
 
     @Before
     fun setUp() {
-
         fakeNoteRepository = FakeNoteRepository()
         getNotesUseCase = GetNotesUseCase(fakeNoteRepository)
 
@@ -38,73 +37,59 @@ class GetNotesUseCaseTest {
                 fakeNoteRepository.insertNote(it)
             }
         }
-
     }
 
     @Test
     fun `Notes In order for ascending by Title`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Title(OrderType.Asc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].title).isLessThan(notes[i+1].title)
+            assertThat(notes[i].title).isLessThan(notes[i + 1].title)
         }
-
     }
 
     @Test
     fun `Notes In order for descending by Title`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Title(OrderType.Desc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].title).isGreaterThan(notes[i+1].title)
+            assertThat(notes[i].title).isGreaterThan(notes[i + 1].title)
         }
-
     }
 
     @Test
     fun `Notes In order for ascending by Date`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Date(OrderType.Asc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].timeStamp).isLessThan(notes[i+1].timeStamp)
+            assertThat(notes[i].timeStamp).isLessThan(notes[i + 1].timeStamp)
         }
-
     }
 
     @Test
     fun `Notes In order for descending by Date`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Date(OrderType.Desc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].timeStamp).isGreaterThan(notes[i+1].timeStamp)
+            assertThat(notes[i].timeStamp).isGreaterThan(notes[i + 1].timeStamp)
         }
-
     }
 
     @Test
     fun `Notes In order for ascending by Color`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Color(OrderType.Asc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].color).isLessThan(notes[i+1].color)
+            assertThat(notes[i].color).isLessThan(notes[i + 1].color)
         }
-
     }
 
     @Test
     fun `Notes In order for descending by Color`() = runBlocking {
-
         val notes = getNotesUseCase.invoke(NoteOrder.Color(OrderType.Desc)).first()
 
         for (i in 0..notes.size - 2) {
-            assertThat(notes[i].color).isGreaterThan(notes[i+1].color)
+            assertThat(notes[i].color).isGreaterThan(notes[i + 1].color)
         }
-
     }
-
 }

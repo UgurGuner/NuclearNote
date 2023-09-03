@@ -1,4 +1,4 @@
-package com.example.nuclearnote.presentation.add_edit_note
+package com.example.nuclearnote.presentation.addEditNote
 
 import androidx.compose.animation.Animatable
 import androidx.compose.animation.AnimatedVisibility
@@ -49,7 +49,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.nuclearnote.R
 import com.example.nuclearnote.domain.model.Note
-import com.example.nuclearnote.presentation.add_edit_note.components.TransparentHintTextField
+import com.example.nuclearnote.presentation.addEditNote.components.TransparentHintTextField
 import com.example.nuclearnote.presentation.util.StatusBarColor
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -110,7 +110,6 @@ fun AddEditNotePage(
             .background(isNoteBackgroundAnimation.value),
         contentAlignment = Alignment.Center
     ) {
-
         StatusBarColor(color = isNoteBackgroundAnimation.value.toArgb())
 
         Column(
@@ -137,7 +136,9 @@ fun AddEditNotePage(
                                 width = 3.dp,
                                 color = if (viewModel.noteColor.value == colorInt) {
                                     Color.Black
-                                } else Color.Transparent,
+                                } else {
+                                    Color.Transparent
+                                },
                                 shape = CircleShape
                             )
                             .clickable {
@@ -215,7 +216,6 @@ fun AddEditNotePage(
             visible = isSnackBarVisible.value,
             modifier = Modifier.align(Alignment.BottomCenter).padding(bottom = 80.dp)
         ) {
-
             Snackbar(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
@@ -226,7 +226,6 @@ fun AddEditNotePage(
                         isSnackBarVisible.value = false
                     }
             ) {
-
                 Text(
                     text = warningText.value,
                     color = Color.White,
@@ -234,12 +233,7 @@ fun AddEditNotePage(
                     fontStyle = FontStyle.Normal,
                     fontFamily = FontFamily.Default
                 )
-
             }
-
-
         }
-
     }
-
 }

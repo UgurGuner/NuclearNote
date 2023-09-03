@@ -1,4 +1,4 @@
-package com.example.nuclearnote.presentation.add_edit_note
+package com.example.nuclearnote.presentation.addEditNote
 
 data class NoteTextFieldState(
     val text: String = "",

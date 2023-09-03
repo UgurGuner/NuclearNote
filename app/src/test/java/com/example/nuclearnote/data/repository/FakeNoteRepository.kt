@@ -5,7 +5,7 @@ import com.example.nuclearnote.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class FakeNoteRepository: NoteRepository {
+class FakeNoteRepository : NoteRepository {
 
     private val notes = mutableListOf<Note>()
 
@@ -26,5 +26,4 @@ class FakeNoteRepository: NoteRepository {
     override suspend fun deleteNote(note: Note) {
         notes.remove(note)
     }
-
 }

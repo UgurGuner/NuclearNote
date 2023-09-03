@@ -4,7 +4,6 @@ import android.util.Base64
 import androidx.room.TypeConverter
 
 class ByteArrayConverter {
-
     @TypeConverter
     fun fromListByteArray(images: ArrayList<ByteArray>): String {
         val stringBuilder = StringBuilder()
@@ -25,5 +24,4 @@ class ByteArrayConverter {
         }
         return ArrayList(images)
     }
-
 }

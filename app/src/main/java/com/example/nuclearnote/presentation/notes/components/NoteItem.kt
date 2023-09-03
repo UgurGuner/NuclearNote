@@ -1,7 +1,13 @@
 package com.example.nuclearnote.presentation.notes.components
 
 import androidx.compose.foundation.Canvas
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
@@ -99,12 +105,9 @@ fun NoteItem(
 @Preview
 @Composable
 fun ShowExample() {
-
     NoteItem(
         note = Note(color = Color.White.toArgb(), content = "Hello", title = "Hello", timeStamp = 2),
         modifier = Modifier.fillMaxWidth().height(120.dp)
     ) {
-
     }
-
 }

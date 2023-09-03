@@ -1,14 +1,13 @@
 package com.example.nuclearnote.data.repository
 
-import com.example.nuclearnote.data.data_source.NoteDao
+import com.example.nuclearnote.data.dataSource.NoteDao
 import com.example.nuclearnote.domain.model.Note
 import com.example.nuclearnote.domain.repository.NoteRepository
 import kotlinx.coroutines.flow.Flow
 
 class NoteRepositoryImpl(
     private val noteDao: NoteDao
-): NoteRepository {
-
+) : NoteRepository {
     override fun getNotes(): Flow<List<Note>> {
         return noteDao.getNotes()
     }
@@ -24,6 +23,4 @@ class NoteRepositoryImpl(
     override suspend fun deleteNote(note: Note) {
         noteDao.deleteNote(note = note)
     }
-
-
 }

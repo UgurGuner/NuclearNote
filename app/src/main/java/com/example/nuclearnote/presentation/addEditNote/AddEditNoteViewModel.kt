@@ -1,4 +1,4 @@
-package com.example.nuclearnote.presentation.add_edit_note
+package com.example.nuclearnote.presentation.addEditNote
 
 import androidx.compose.runtime.MutableState
 import androidx.compose.runtime.State
@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.nuclearnote.domain.model.InvalidNoteException
 import com.example.nuclearnote.domain.model.Note
-import com.example.nuclearnote.domain.use_case.NoteUseCases
+import com.example.nuclearnote.domain.useCase.NoteUseCases
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
@@ -80,7 +80,7 @@ class AddEditNoteViewModel @Inject constructor(
             is AddEditNoteEvent.ChangeTitleFocus -> {
                 _noteTitle.value = noteTitle.value.copy(
                     isHintVisible = !event.focusState.isFocused &&
-                            noteTitle.value.text.isBlank()
+                        noteTitle.value.text.isBlank()
                 )
             }
 
@@ -93,7 +93,7 @@ class AddEditNoteViewModel @Inject constructor(
             is AddEditNoteEvent.ChangeContentFocus -> {
                 _noteContent.value = _noteContent.value.copy(
                     isHintVisible = !event.focusState.isFocused &&
-                            _noteContent.value.text.isBlank()
+                        _noteContent.value.text.isBlank()
                 )
             }
 
@@ -110,7 +110,7 @@ class AddEditNoteViewModel @Inject constructor(
                                 content = noteContent.value.text,
                                 timeStamp = System.currentTimeMillis(),
                                 color = noteColor.value,
-                                id = currentNoteId,
+                                id = currentNoteId
 
                             )
                         )
@@ -125,17 +125,12 @@ class AddEditNoteViewModel @Inject constructor(
                 }
             }
             is AddEditNoteEvent.ImageSaved -> {
-
-
-
             }
         }
-
     }
 
     sealed class UiEvent {
-        data class ShowSnackBar(val message: String): UiEvent()
-        object SaveNote: UiEvent()
+        data class ShowSnackBar(val message: String) : UiEvent()
+        object SaveNote : UiEvent()
     }
-
 }

@@ -5,6 +5,7 @@ plugins {
     kotlin("kapt")
     id("kotlin-parcelize")
     id("com.google.dagger.hilt.android")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -30,7 +31,6 @@ android {
             keyPassword = "NN2294@"
             keyAlias = "NuclearNoteKeystore"
         }
-
     }
 
     buildTypes {
@@ -87,7 +87,7 @@ dependencies {
     implementation("androidx.room:room-runtime:2.5.2")
     kapt("androidx.room:room-compiler:2.5.2")
 
-    //Local Unit Tests
+    // Local Unit Tests
     testImplementation("junit:junit:4.13.2")
     testImplementation("androidx.test:core:1.5.0")
     testImplementation("androidx.arch.core:core-testing:2.2.0")
@@ -97,7 +97,7 @@ dependencies {
     testImplementation("io.mockk:mockk:1.10.5")
     debugImplementation("androidx.compose.ui:ui-test-manifest:1.4.3")
 
-    //Instrumentation Tests
+    // Instrumentation Tests
     androidTestImplementation("com.google.dagger:hilt-android-testing:2.37")
     kaptAndroidTest("com.google.dagger:hilt-android-compiler:2.44")
     androidTestImplementation("junit:junit:4.13.2")
@@ -109,7 +109,20 @@ dependencies {
     androidTestImplementation("com.squareup.okhttp3:mockwebserver:4.9.1")
     androidTestImplementation("io.mockk:mockk-android:1.10.5")
     androidTestImplementation("androidx.test:runner:1.5.2")
+}
 
+ktlint {
+    android.set(true)
+    debug.set(true)
+    version.set("0.50.0")
+    ignoreFailures.set(false)
+    reporters {
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.HTML)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.CHECKSTYLE)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.JSON)
+        reporter(org.jlleitschuh.gradle.ktlint.reporter.ReporterType.PLAIN_GROUP_BY_FILE)
+    }
 }
 
 kapt {

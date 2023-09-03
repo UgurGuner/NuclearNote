@@ -5,7 +5,7 @@ import androidx.compose.material.darkColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 
-private val DarkColorPalette = darkColors(
+private val darkColorPalette = darkColors(
     primary = Color.White,
     background = DarkGray,
     onBackground = Color.White,
@@ -16,7 +16,7 @@ private val DarkColorPalette = darkColors(
 @Composable
 fun NuclearNoteAppTheme(darkTheme: Boolean = true, content: @Composable () -> Unit) {
     MaterialTheme(
-        colors = DarkColorPalette,
+        colors = darkColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content

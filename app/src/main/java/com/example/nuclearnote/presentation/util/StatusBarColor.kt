@@ -6,11 +6,9 @@ import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun StatusBarColor(color: Int) {
-
     val activity = LocalContext.current as? Activity ?: return
 
     activity.window.statusBarColor = color
 
     activity.window.navigationBarColor = color
-
 }
